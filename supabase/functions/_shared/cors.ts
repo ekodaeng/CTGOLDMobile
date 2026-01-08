@@ -1,0 +1,13 @@
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Client-Info, Apikey, Cookie',
+  'Access-Control-Allow-Credentials': 'true',
+};
+
+export function handleCorsOptions(): Response {
+  return new Response(null, {
+    status: 200,
+    headers: corsHeaders,
+  });
+}

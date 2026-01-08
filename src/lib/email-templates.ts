@@ -1,0 +1,222 @@
+export interface AdminResetPasswordEmailData {
+  resetPasswordUrl: string;
+  year?: number;
+}
+
+export function getAdminResetPasswordEmailTemplate(data: AdminResetPasswordEmailData): string {
+  const year = data.year || new Date().getFullYear();
+
+  const template = `<!DOCTYPE html>
+<html lang="id" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="color-scheme" content="dark">
+  <meta name="supported-color-schemes" content="dark">
+  <title>Reset Password Admin CTGOLD</title>
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #070A0F;
+      color: #E5E7EB;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .mobile-padding {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+      .mobile-text-center {
+        text-align: center !important;
+      }
+      .button {
+        width: 100% !important;
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #070A0F; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;">
+
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #070A0F;">
+    <tr>
+      <td align="center" style="padding: 32px 16px;">
+
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 520px; background-color: #0B0F1A; border-radius: 18px; border: 1px solid rgba(245, 197, 66, 0.18); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);">
+
+          <tr>
+            <td style="padding: 40px 40px 24px 40px; text-align: center;" class="mobile-padding">
+              <div style="margin-bottom: 24px;">
+                <div style="display: inline-block; width: 64px; height: 64px; background: linear-gradient(135deg, #F5C542 0%, #D6B25E 100%); border-radius: 16px; line-height: 64px; text-align: center; box-shadow: 0 8px 24px rgba(245, 197, 66, 0.3);">
+                  <span style="font-size: 32px; font-weight: 700; color: #0B0F1A; display: inline-block; vertical-align: middle; line-height: normal;">🔐</span>
+                </div>
+              </div>
+
+              <h1 style="margin: 0 0 16px 0; font-size: 28px; font-weight: 700; color: #FFFFFF; line-height: 1.2;">Reset Password Admin</h1>
+
+              <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #F5C542 0%, #D6B25E 100%); margin: 0 auto; border-radius: 2px;"></div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 24px 40px;" class="mobile-padding">
+              <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #D1D5DB;">
+                Halo Admin CTGOLD,
+              </p>
+
+              <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #D1D5DB;">
+                Kami menerima permintaan untuk reset password akun admin CTGOLD.
+              </p>
+
+              <p style="margin: 0 0 24px 0; font-size: 15px; line-height: 1.6; color: #D1D5DB;">
+                Jika permintaan ini benar berasal dari Anda, silakan klik tombol di bawah untuk membuat password baru.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 40px 32px 40px;" class="mobile-padding">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <a href="${data.resetPasswordUrl}" target="_blank" class="button" style="display: inline-block; padding: 16px 48px; background: linear-gradient(135deg, #F5C542 0%, #D6B25E 100%); color: #0B0F1A; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 12px; box-shadow: 0 4px 16px rgba(245, 197, 66, 0.4); text-align: center; min-width: 200px;">
+                      Reset Password
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 40px 32px 40px;" class="mobile-padding">
+              <p style="margin: 0 0 12px 0; font-size: 13px; line-height: 1.5; color: #9CA3AF; text-align: center;">
+                Atau salin dan buka link berikut di browser Anda:
+              </p>
+              <p style="margin: 0; font-size: 12px; line-height: 1.5; word-break: break-all; text-align: center;">
+                <a href="${data.resetPasswordUrl}" target="_blank" style="color: #F5C542; text-decoration: underline;">${data.resetPasswordUrl}</a>
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 40px 32px 40px;" class="mobile-padding">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px;">
+                <tr>
+                  <td style="padding: 20px;">
+                    <p style="margin: 0 0 12px 0; font-size: 13px; font-weight: 600; color: #93C5FD; text-transform: uppercase; letter-spacing: 0.5px;">
+                      ⚠️ Catatan Keamanan
+                    </p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.6; color: #D1D5DB;">
+                      <li style="margin-bottom: 8px;">Link ini hanya berlaku selama <strong style="color: #FFFFFF;">15 menit</strong></li>
+                      <li style="margin-bottom: 8px;">Link hanya bisa digunakan <strong style="color: #FFFFFF;">1 kali</strong></li>
+                      <li style="margin-bottom: 0;">Jika Anda tidak merasa meminta reset password, <strong style="color: #FFFFFF;">abaikan email ini</strong></li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 24px 40px 40px 40px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);" class="mobile-padding">
+              <p style="margin: 0 0 8px 0; font-size: 12px; line-height: 1.5; color: #6B7280;">
+                Email ini dikirim otomatis oleh sistem CTGOLD.<br>
+                Mohon tidak membalas email ini.
+              </p>
+              <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #4B5563;">
+                © ${year} CTGOLD. All rights reserved.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>`;
+
+  return template;
+}
+
+export interface ResendEmailOptions {
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
+}
+
+export async function sendEmailWithResend(
+  apiKey: string,
+  options: ResendEmailOptions
+): Promise<{ success: boolean; error?: string; id?: string }> {
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: options.from,
+        to: options.to,
+        subject: options.subject,
+        html: options.html,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error('Resend API error:', data);
+      return {
+        success: false,
+        error: data.message || 'Failed to send email',
+      };
+    }
+
+    return {
+      success: true,
+      id: data.id,
+    };
+  } catch (error) {
+    console.error('Send email error:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
+}
